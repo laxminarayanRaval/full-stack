@@ -1,2 +1,2 @@
-# full-stack
-full-stack web development MERN/MEAN ( MongoDB Express React/Angular Node )
+# Full-Stack
+Full-Stack web development MERN/MEAN ( MongoDB Express React/Angular Node )
