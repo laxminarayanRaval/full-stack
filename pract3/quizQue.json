@@ -1,81 +1,92 @@
-const { exit } = require("process");
-const readline = require("readline");
-const rs = require("readline-sync")
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
-
-var QuizData = require("./quizQue.json");
-var userName;
-var playQuiz;
-var points = 0;
-var option;
-
-const GetUserData = () => {
-    rl.question(`Enter The User User Name  ?  `, function (answer) {
-        var name = answer;
-        SetUserData(name);
-    });
-}
-const SetUserData = (name) => {
-    userName = name;
-    console.log(`\n\nHello, Wellcome  ${userName}!`);
-    StartGame();
-}
-const StartGame = () => {
-    rl.question(`${userName} You Have Play a React Quiz ("Yes" Press : 'Y' and "No" Press :'N') ? `, function (answer) {
-        playQuiz = answer;
-        if (playQuiz == "Y" || playQuiz == "y") {
-            GameRoles();
-        } else {
-            if (playQuiz == "N" || playQuiz == "n") {
-                console.log(`Thank You ${userName}`);
-                rl.close();
-            }
-        }
-    });
-}
-const GameRoles = () => {
-    console.log("\nThere Will 10 Questions")
-    console.log(`******************* Game Rolus *******************`);
-    console.log(`1) Your Right Answer For +5 Point  `);
-    console.log(`2) Your Wrong Answer For -2 Point  `);
-    console.log(`**************************************************`);
-    QuizQues();
-}
-const QuizQues = () => {
-    var no = 0;
-    while (true) {
-        if (QuizData.length == no) {
-            console.log(`\nYour Score :- ${points}`);
-            rl.close();
-            exit();
-        } else {
-
-            console.log('\n');
-            console.log(`${no + 1}) ${QuizData[no].Qus}`);
-            console.log(`A) ${QuizData[no].A}`);
-            console.log(`B) ${QuizData[no].B}`);
-            console.log(`C) ${QuizData[no].C}`);
-            console.log(`D) ${QuizData[no].D}`);
-            GetQuizOptions(QuizData[no].Ans);
-            no++;
-        }
-
+[
+    {
+        "id":"1",
+        "Qus":"React.js is a free and open-source front-end .................",
+        "A":"JavaScript library",
+        "B":"Bootstrap library",
+        "C":"CSS library",
+        "D":"None of the Above",
+        "Ans":"A"
+    },
+    {
+        "id":"2",
+        "Qus":"React.js had Written in ................",
+        "A":"JavaScript",
+        "B":"Python",
+        "C":"C / C++ ",
+        "D":"PHP",
+        "Ans":"A"
+    },
+    {
+        "id":"3",
+        "Qus":"Which of the following command is used to install create-react-app?",
+        "A":"npm install -g create-react-app",
+        "B":"npm install -f create-react-app",
+        "C":"install -g create-react-app",
+        "D":"npm install create-react-app",
+        "Ans":"A"
+    },
+    {
+        "id":"4",
+        "Qus":"What of the following is used in React.js to increase performance?",
+        "A":"Original DOM",
+        "B":"Virtual DOM",
+        "C":"Both A and B ",
+        "D":"None of the above.",
+        "Ans":"B"
+    },
+    {
+        "id":"5",
+        "Qus":"A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
+        "A":"Constructor",
+        "B":"Class",
+        "C":"Object",
+        "D":"DataObject",
+        "Ans":"B"
+    },
+    {
+        "id":"6",
+        "Qus":"What is the default port where webpack-server runs?",
+        "A":"3000",
+        "B":"8080",
+        "C":"3030",
+        "D":"6060",
+        "Ans":"B"
+    },
+    {
+        "id":"7",
+        "Qus":"How many numbers of elements a valid react component can return?",
+        "A":"1",
+        "B":"2",
+        "C":"5",
+        "D":"3",
+        "Ans":"A"
+    },
+    {
+        "id":"8",
+        "Qus":"Arbitrary inputs of components in React are called",
+        "A":"Keys",
+        "B":"Props",
+        "C":"Elements",
+        "D":"Ref",
+        "Ans":"B"
+    },
+    {
+        "id":"9",
+        "Qus":"Everything in react is a ....................",
+        "A":"Class",
+        "B":"Package",
+        "C":"Component",
+        "D":"Module",
+        "Ans":"C"
+    },
+    {
+        "id":"10",
+        "Qus":"Which of the following option is used to access the state of a component from inside of a member function?",
+        "A":"this.state",
+        "B":"this.values",
+        "C":"this.getState()",
+        "D":"this.prototype.stateValue",
+        "Ans":"B"
     }
-}
-const GetQuizOptions = (Ans) => {
-    var op = rs.question(`Select Option  ?  `);
-    option = op.toUpperCase();
-    if (Ans == option) {
-        points += 5;
-        console.log("\nYour Score : -", points);
-    } else {
-        points -= 2;
-        console.log(`\nCorrect Answer  : ${Ans}`);
-        console.log("\nYour Score : -", points);
-    }
-}
-
-GetUserData();
+]
